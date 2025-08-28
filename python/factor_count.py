@@ -11,7 +11,7 @@ def main():
         except:
             print("Please input your number in integer form.")
         else:
-            if potential_num <= 1:
+            if potential_num < 1:
                 print("This number is not prime.")
             else:
                 for number in range(1,isqrt(potential_num)+1):
