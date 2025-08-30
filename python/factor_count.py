@@ -8,11 +8,11 @@ def main():
             quit()
         try:
             potential_num =int(potential)
-        except:
+        except ValueError:
             print("Please input your number in integer form.")
         else:
             if potential_num < 1:
-                print("This number is not prime.")
+                print("This number cannot be calculated for factors.")
             else:
                 for number in range(1,isqrt(potential_num)+1):
                     if potential_num % number == 0:
