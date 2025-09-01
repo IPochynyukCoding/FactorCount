@@ -88,9 +88,10 @@ jobs:
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
     - if: matrix.build-mode == 'manual'
       name: "Build C version"
-      shell: powershell
+      shell: pwsh
       run: |
-        if ($?) { gcc factor_count.c -o factor_count } ; if ($?) { .\factor_count }
+        gcc factor_count.c -o factor_count 
+        if ($?) { .\factor_count }
         exit 1
 
     - name: Perform CodeQL Analysis
