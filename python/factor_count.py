@@ -9,10 +9,10 @@ def main():
         try:
             potential_num =int(potential)
         except ValueError:
-            print("Please input your number in integer form.")
+            print("Please input a valid positive integer (number > 0)")
         else:
             if potential_num < 1:
-                print("This number cannot be calculated for factors.")
+                print("This number cannot be calculated for factors due to being smaller than one.")
             else:
                 for number in range(1,isqrt(potential_num)+1):
                     if potential_num % number == 0:

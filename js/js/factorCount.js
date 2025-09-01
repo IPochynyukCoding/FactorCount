@@ -15,20 +15,21 @@ function getFactorArray(number){
 
 
 
-let inputNumber = document.getElementById("inputNumber")
-let outputArray = document.getElementById("results")
-let isPrime = document.getElementById("isPrime")
+const inputNumber = document.getElementById("inputNumber")
+const outputArray = document.getElementById("results")
+const isPrime = document.getElementById("isPrime")
 
 
 document.querySelector('button[type="submit"]').addEventListener("click",function(e){
-    console.log(inputNumber)
-    if (isNaN(Number(inputNumber.value)) || Number(inputNumber.value) <= 0 || Number(inputNumber.value) != Math.floor(Number(inputNumber.value))){
-        alert("This number is not an natural number, please try again!")
+    const inputValue = inputNumber.value
+    if (isNaN(Number(inputValue)) || Number(inputValue) <= 0 || Number(inputValue) != Math.floor(Number(inputValue))){
+        alert("This number is not a positive integer greater than zero, please try again!")
         e.preventDefault()
     }
     else{
-        factorResults = getFactorArray(inputNumber.value)
-        outputArray.innerText = `The factors of ${inputNumber.value} are ${factorResults}.`
-        isPrime.innerText = `${inputNumber.value} ${factorResults.length == 2 ? "is" : "is not"} prime because it has ${factorResults.length} factors.`
+        const factorResults = getFactorArray(inputValue)
+        const numberOfFactors = factorResults.length
+        outputArray.innerText = `The factors of ${inputValue} are ${factorResults}.`
+        isPrime.innerText = `${inputValue} ${numberOfFactors == 2 ? "is" : "is not"} prime because it has ${numberOfFactors} factors.`
     }
 })
