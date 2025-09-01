@@ -88,7 +88,7 @@ jobs:
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
     - if: matrix.build-mode == 'manual'
       name: "Build C version"
-      shell: bash
+      shell: powershell
       run: |
         if ($?) { gcc factor_count.c -o factor_count } ; if ($?) { .\factor_count }
         exit 1
