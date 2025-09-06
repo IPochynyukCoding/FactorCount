@@ -3,7 +3,7 @@
 #include <math.h>
 #include <errno.h>
 #include <string.h>
-//Ensure safe size based on highly composite numbers up to ULONG_MAX (2^64-1)
+//Ensure safe array size based on highly composite numbers up to ULONG_MAX (2^64-1), using https://gist.github.com/dario2994/fb4713f252ca86c1254d as reference.
 #define max_size 104000
 
 typedef unsigned long long ull;
@@ -46,7 +46,7 @@ int main(){
     ull number_test;
     char buffer[1024];
     int success;
-    //Extensive input validation by https://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html with some modifications for ULL
+    //Extensive input validation by https://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html with some modifications for ULL.
     do{
         printf("Enter a number or 'q' to quit: ");
         //If input has failed to get anything
@@ -67,7 +67,7 @@ int main(){
             exit(EXIT_SUCCESS);
         }
         else if(endptr==buffer){
-            printf("Please input a valid number between 1 and 18446744073709551615, as you have non-number character(s) in your input.\n");
+            printf("Please input a valid number between 1 and 18446744073709551615, as you pressed 'enter' without inputting anything.\n");
             success=0;
         }
         else if(errno==ERANGE || number_test==0){
@@ -75,7 +75,7 @@ int main(){
             success=0;
         }
         else if(*endptr && *endptr != '\n'){
-            printf("Please input a valid number between 1 and 18446744073709551615, as you pressed entered without inputting anything.\n");
+            printf("Please input a valid number between 1 and 18446744073709551615, as you have non-digit characters in your input.\n");
             success=0;
         }
         else{
