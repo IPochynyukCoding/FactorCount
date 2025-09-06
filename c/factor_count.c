@@ -3,7 +3,7 @@
 #include <math.h>
 #include <errno.h>
 #include <string.h>
-
+//Ensure safe size based on highly composite numbers up to ULONG_MAX (2^64-1)
 #define max_size 104000
 
 typedef unsigned long long ull;
@@ -46,8 +46,10 @@ int main(){
     ull number_test;
     char buffer[1024];
     int success;
+    //Extensive input validation by https://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html with some modifications for ULL
     do{
         printf("Enter a number or 'q' to quit: ");
+        //If input has failed to get anything
         if(!fgets(buffer,1024,stdin)){
             printf("Unable to get a reading, exiting...");
             exit(EXIT_FAILURE);
@@ -59,13 +61,13 @@ int main(){
             errno=ERANGE;
         }
         number_test=strtoull(buffer,&endptr,10);
-        //Case insensitive for quiting
+        //Quitting is now case insensitive
         if(strlen(buffer)==2 && strnicmp(buffer,"q",1)==0){
             printf("Thank you for running the factor counter, exiting...");
             exit(EXIT_SUCCESS);
         }
         else if(endptr==buffer){
-            printf("Please input a valid number between 1 and 18446744073709551615.\n");
+            printf("Please input a valid number between 1 and 18446744073709551615, as you have non-number character(s) in your input.\n");
             success=0;
         }
         else if(errno==ERANGE || number_test==0){
@@ -73,7 +75,7 @@ int main(){
             success=0;
         }
         else if(*endptr && *endptr != '\n'){
-            printf("Please input a valid number between 1 and 18446744073709551615.\n");
+            printf("Please input a valid number between 1 and 18446744073709551615, as you pressed entered without inputting anything.\n");
             success=0;
         }
         else{
