@@ -1,7 +1,6 @@
 from math import isqrt
 def main():
-    potential = ""
-    while potential != "q":
+    while True:
         potential = input("Please input a number to check for prime or press 'q' to quit: ")
         factors = []
         if potential.lower() == "q":
