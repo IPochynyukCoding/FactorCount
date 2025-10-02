@@ -9,7 +9,7 @@ function getFactorArray(number){
     if(Math.floor(Math.sqrt(number))**2 == number){
         factorArray.push(Math.floor(Math.sqrt(number)))
     }
-    factorArray.sort((a,b)=> a>b ? 1 : a<b ? -1:0)
+    factorArray.sort((a, b) => a - b)
     return factorArray
 }
 
@@ -23,13 +23,13 @@ const isPrime = document.getElementById("isPrime")
 document.querySelector('button[type="submit"]').addEventListener("click",function(e){
     const inputValue = inputNumber.value
     if (isNaN(Number(inputValue)) || Number(inputValue) <= 0 || Number(inputValue) != Math.floor(Number(inputValue))){
-        alert("This number is not a positive integer greater than zero, please try again!")
+        alert("This number is not an integer greater than zero, please try again!")
         e.preventDefault()
     }
     else{
         const factorResults = getFactorArray(inputValue)
         const numberOfFactors = factorResults.length
         outputArray.innerText = `The factors of ${inputValue} are ${factorResults}.`
-        isPrime.innerText = `${inputValue} ${numberOfFactors == 2 ? "is" : "is not"} prime because it has ${numberOfFactors} factors.`
+        isPrime.innerText = `${inputValue} is ${numberOfFactors == 2 ? "" : "not"} prime because it has ${numberOfFactors} factor(s).`
     }
 })

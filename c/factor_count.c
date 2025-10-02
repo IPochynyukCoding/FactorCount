@@ -7,11 +7,12 @@
 #define max_size 104000
 
 typedef unsigned long long ull;
-int sort(const void* a,const void* b){
 
+int sort(const void* a,const void* b){
     return (*(const ull*)a)< (*(const ull*)b)? -1: (*(const ull*)a)> (*(const ull*)b) ? 1 : 0;
 }
-void *factor_count(ull number){
+
+void factor_count(ull number){
 ull factors = 0;
 ull *factor_array=calloc(max_size,sizeof(ull));
 if(factor_array == NULL){
@@ -37,9 +38,8 @@ printf("{");
  }
  printf("}\n");
  factors == 2 ? printf("%llu is prime because it has 2 factors.\n",number) : printf("%llu is not prime because it has %llu factor(s).\n",number,factors);
+ free(factor_array);
 }
-
-
 
 int main(){
     while(1==1){

@@ -18,12 +18,8 @@ def main():
                     if potential_num % number == 0:
                         factors.append(number)
                         factors.append(potential_num//number)
-                factors = list(set(factors))
-                factors.sort()
+                factors = sorted(list(set(factors)))
                 print(f"The factors of {potential_num} are: {factors}")
-                if len(factors) == 2:
-                    print(f"The number is prime, because it has {len(factors)} factors.")
-                else:
-                    print(f"The number is not prime, because it has {len(factors)} factors.")
+                print(f"The number is {'not ' if len(factors) != 2 else ''}prime, because it has {len(factors)} factor(s).")
 if __name__ == "__main__":
     main()
