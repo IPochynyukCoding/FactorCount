@@ -19,6 +19,6 @@ def main():
                         factors.append(potential_num//number)
                 factors = sorted(list(set(factors)))
                 print(f"The factors of {potential_num} are: {factors}")
-                print(f"The number is {'not ' if len(factors) != 2 else ''}prime, because it has {len(factors)} factor(s).")
+                print(f"{potential_num} is {'not ' if len(factors) != 2 else ''}prime, because it has {len(factors)} factor(s).")
 if __name__ == "__main__":
     main()
