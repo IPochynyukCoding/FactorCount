@@ -32,7 +32,7 @@ void main(){
                     continue;
                 }
                 catch (OverflowException){
-                    Console.WriteLine("This input is not valid because the number is outside the bounds of this program");
+                    Console.WriteLine("This input is invalid because the number is outside the bounds of this program");
                     continue;
                 }
                 is_valid_input=true;
