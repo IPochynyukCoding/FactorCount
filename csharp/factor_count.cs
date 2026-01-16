@@ -12,12 +12,12 @@
     factor_values.Sort();
     return factor_values;
 }
-int EXIT_SUCCESS=0;
-void Main(){
+void main(){
+    int EXIT_SUCCESS=0;
     while (true){
             bool is_valid_input=false;
             ulong real_number=0;
-            string number_input;
+            string? number_input;
             while (!is_valid_input){
                 Console.Write("Insert a number to check its factors or press 'q' to quit: ");
                 number_input=Console.ReadLine();
@@ -38,7 +38,7 @@ void Main(){
                 is_valid_input=true;
             }
             List<ulong> factors=factor_calculate(real_number);
-            Console.WriteLine($"Factors of {real_number}: [{String.Join(",",factors)}]");
+            Console.WriteLine($"Factors of {real_number}: [{string.Join(",",factors)}]");
 
             if (real_number<2){
                 Console.WriteLine($"{real_number} is not prime because it is smaller than 2.");
@@ -47,4 +47,4 @@ void Main(){
         }
 }
 
-Main();
+main();
