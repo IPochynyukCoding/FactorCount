@@ -88,9 +88,7 @@ int main(){
             printf("Please input a valid number between 1 and 18446744073709551615, as you have non-digit characters in your number.\n");
             continue;
         }
-        else if(*endptr && *endptr == '\n'){
-            success=true;
-        }
+        success=true;
     }while(!success);
     factor_count(number_test);
     }
