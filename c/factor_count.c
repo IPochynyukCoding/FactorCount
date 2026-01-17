@@ -55,7 +55,7 @@ int main(){
     for(;;){
     ull number_test;
     char buffer[1024];
-    bool success;
+    bool success=false;
     //Extensive input validation by https://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html with some modifications for ULL.
     do{
         printf("Enter a number or 'q' to quit: ");
@@ -77,19 +77,22 @@ int main(){
             exit(EXIT_SUCCESS);
         }
         else if(endptr==buffer){
-            printf("Please input a valid number between 1 and 18446744073709551615, as you pressed 'enter' without inputting anything.\n");
+            printf("Please input a valid number between 1 and 18446744073709551615, as you don't have a valid number in your input.\n");
+            continue;
         }
         else if(errno==ERANGE || number_test==0){
             printf("Please input a valid number between 1 and 18446744073709551615, as your number is too small or large.\n");
+            continue;
         }
         else if(*endptr && *endptr != '\n'){
-            printf("Please input a valid number between 1 and 18446744073709551615, as you have non-digit characters in your input.\n");
+            printf("Please input a valid number between 1 and 18446744073709551615, as you have non-digit characters in your number.\n");
+            continue;
         }
-        else{
+        else if(*endptr && *endptr == '\n'){
             success=true;
         }
     }while(!success);
     factor_count(number_test);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
