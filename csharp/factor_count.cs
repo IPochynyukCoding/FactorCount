@@ -17,7 +17,7 @@ void main(){
     while (true){
             bool is_valid_input=false;
             ulong real_number=0;
-            string? number_input;
+            string number_input="0";
             while (!is_valid_input){
                 Console.Write("Insert a number to check its factors or press 'q' to quit: ");
                 number_input=Console.ReadLine();
